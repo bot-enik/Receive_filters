@@ -1,4 +1,4 @@
-function Hd = RRC_matlab
+function Hd = RRC_matlab(Fs, N, Fc, TM, R, DT, Beta)
 %RRC_MATLAB Returns a discrete-time filter object.
 
 % MATLAB Code
@@ -8,14 +8,14 @@ function Hd = RRC_matlab
 % FIR Window Raised-cosine filter designed using the FIRRCOS function.
 
 % All frequency values are in kHz.
-Fs = 144;  % Sampling Frequency
-
-N    = 96;         % Order
-Fc   = 9;          % Cutoff Frequency
-TM   = 'Rolloff';  % Transition Mode
-R    = 0.35;       % Rolloff
-DT   = 'sqrt';     % Design Type
-Beta = 0.5;        % Window Parameter
+% Fs = 144;  % Sampling Frequency
+% 
+% N    = 96;         % Order
+% Fc   = 9;          % Cutoff Frequency
+% TM   = 'Rolloff';  % Transition Mode
+% R    = 0.35;       % Rolloff
+% DT   = 'sqrt';     % Design Type
+% Beta = 0.5;        % Window Parameter
 
 % Create the window vector for the design algorithm.
 win = kaiser(N+1, Beta);
