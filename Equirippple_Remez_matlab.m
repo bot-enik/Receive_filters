@@ -1,4 +1,5 @@
-function Hd = Equirippple_Remez_matlab
+function Hd = Equirippple_Remez_matlab(Fs, N, Fpass, ...
+    Fstop, Wpass, Wstop, dens)
 %EQUIRIPPPLE_REMEZ_MATLAB Returns a discrete-time filter object.
 
 % MATLAB Code
@@ -7,15 +8,15 @@ function Hd = Equirippple_Remez_matlab
 
 % Equiripple Lowpass filter designed using the FIRPM function.
 
-% All frequency values are in kHz.
-Fs = 144;  % Sampling Frequency
+% ##### All frequency values are in kHz.#####
+% Fs = 144;  % Sampling Frequency
 
-N     = 96;    % Order
-Fpass = 11;    % Passband Frequency
-Fstop = 13.5;  % Stopband Frequency
-Wpass = 1;     % Passband Weight
-Wstop = 60;    % Stopband Weight
-dens  = 16;    % Density Factor
+% N     = 96;    % Order
+% Fpass = 11;    % Passband Frequency
+% Fstop = 13.5;  % Stopband Frequency
+% Wpass = 1;     % Passband Weight
+% Wstop = 60;    % Stopband Weight
+% dens  = 16;    % Density Factor
 
 % Calculate the coefficients using the FIRPM function.
 b  = firpm(N, [0 Fpass Fstop Fs/2]/(Fs/2), [1 1 0 0], [Wpass Wstop], ...

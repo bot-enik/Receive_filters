@@ -150,4 +150,22 @@ C1 = cost(rrcTxFil)
 C2 = cost(rcrFilt)
 
 
+%% Generating RRC filter
+% 
+% Nsymb = 12;           % Filter span
+% roll_off = 0.35;     % Roll-off factor
+% sampsPerSymb = 8;    % Uspample/decimation factor 
+% 
+% rrcTxFil = comm.RaisedCosineReceiveFilter( ...
+%   'Shape',                  'Square root', ...
+%   'RolloffFactor',          roll_off,      ...
+%   'FilterSpanInSymbols',    Nsymb,         ...
+%   'InputSamplesPerSymbol',  sampsPerSymb,  ...
+%   'DecimationFactor',       sampsPerSymb   ...
+% );
+% 
+% taps = Nsymb * sampsPerSymb + 1;
+% 
+% fvtool(rrcTxFil, 'Analysis', 'impulse');
+
 
