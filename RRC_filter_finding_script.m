@@ -16,9 +16,9 @@ Initial_RRC_Numerator = Initial_RRC.Numerator;
 % FIR
 % All frequency values are in kHz.
 Fs    = 144;       % Sampling Frequency
-N     = 144;       % Order
-Fpass = 11;        % Passband Frequency
-Fstop = 13.5;      % Stopband Frequency
+N     = 116;       % Order              144
+Fpass = 15;        % Passband Frequency 11
+Fstop = 21;        % Stopband Frequency 13.5
 Wpass = 0.1;       % Passband Weight
 Wstop = 80;        % Stopband Weight
 dens  = 16;        % Density Factor
@@ -36,9 +36,25 @@ Initial_delay = Initial_FIR_delay + Initial_RRC_delay
 % ##################### Synthesising filters #############################
 %%
 % Loop "for" by Nsymb in RRC, which sets the order of filter
-for Nsymb = 13:13
+for Nsymb = 11:11
     
     N = Nsymb * 8;
+    % RRC
+    Fc   = 9;          % Cutoff Frequency
+    TM   = 'Rolloff';  % Transition Mode
+    R    = 0.35;       % Rolloff
+    DT   = 'sqrt';     % Design Type
+    Beta = 0.5;        % Window Parameter
+    
+    % FIR
+    Fpass = 15;        % Passband Frequency 11
+    Fstop = 21;        % Stopband Frequency 13.5
+    Wpass = 0.1;       % Passband Weight
+    Wstop = 80;        % Stopband Weight
+    dens  = 16;        % Density Factor
+
+    
+    
     
     % Recalculate the filters
     FIR = Equirippple_Remez_matlab(Fs, N, Fpass, Fstop, Wpass, Wstop, dens);
@@ -64,4 +80,5 @@ for Nsymb = 13:13
     
 end % Loop end
 
-
+%%
+numerator = [zeros(1,72) 1 zeros(1,72)]
