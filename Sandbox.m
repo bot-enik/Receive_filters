@@ -1,14 +1,4 @@
 %%
-% f = -20000:10:20000;
-% y = zeros(1,length(f));
-% 
-% 
-% y = func_G(f, 0.35, 0.0001);
-% 
-% 
-% plot(f,y)
-
-%%
 % FIR
 % All frequency values are in kHz.
 Fs    = 144;       % Sampling Frequency
@@ -34,6 +24,7 @@ for n=108:8:144
             res = n
             res = f_pass
             res = f_stop
+            res = abs(numerator(n/2 + 9))
             fvtool(FIR, 'analysis', 'impulse');
             
             result = input('Continue? ', 's');
